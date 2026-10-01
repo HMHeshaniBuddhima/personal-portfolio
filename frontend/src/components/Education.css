@@ -1,0 +1,188 @@
+.education {
+  min-height: 80vh;
+  padding: 110px 8%;
+
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(0, 170, 255, 0.1),
+      transparent 30%
+    ),
+    #080c14;
+
+  color: white;
+}
+
+
+/* Heading */
+
+.education-heading {
+  max-width: 750px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.education-heading h2 {
+  font-size: 52px;
+  margin: 15px 0;
+}
+
+.education-heading h2 strong {
+  color: #00aaff;
+}
+
+.education-heading > p {
+  color: #94a3b8;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* Container */
+
+.education-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+
+/* Education Card */
+
+.education-card {
+  position: relative;
+
+  display: flex;
+  gap: 30px;
+
+  padding: 40px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(15, 30, 50, 0.9),
+    rgba(5, 15, 28, 0.95)
+  );
+
+  border: 1px solid #1e3a56;
+  border-radius: 18px;
+
+  transition: 0.3s;
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+  border-color: #00aaff;
+
+  box-shadow:
+    0 20px 45px rgba(0, 170, 255, 0.1);
+}
+
+
+/* Icon */
+
+.education-icon {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  background: rgba(0, 170, 255, 0.1);
+
+  border: 1px solid rgba(0, 170, 255, 0.3);
+  border-radius: 14px;
+
+  color: #00aaff;
+  font-size: 28px;
+}
+
+
+/* Content */
+
+.education-content {
+  flex: 1;
+}
+
+.education-status {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  color: #00aaff;
+
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.education-content h3 {
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.university {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: #00aaff;
+
+  margin-bottom: 20px;
+}
+
+.education-content > p {
+  max-width: 750px;
+
+  color: #94a3b8;
+
+  line-height: 1.8;
+
+  margin-bottom: 25px;
+}
+
+
+/* Tags */
+
+.education-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.education-tags span {
+  padding: 7px 12px;
+
+  background: rgba(0, 170, 255, 0.07);
+
+  border: 1px solid rgba(0, 170, 255, 0.2);
+  border-radius: 6px;
+
+  color: #00aaff;
+
+  font-size: 12px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+  .education {
+    padding: 80px 5%;
+  }
+
+  .education-heading h2 {
+    font-size: 38px;
+  }
+
+  .education-card {
+    flex-direction: column;
+    padding: 28px;
+  }
+
+  .education-content h3 {
+    font-size: 22px;
+  }
+}

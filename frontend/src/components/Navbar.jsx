@@ -14,7 +14,10 @@ function Navbar() {
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#research">Research</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certificates</a>
         <a href="#contact">Contact</a>
+        
       </div>
 
     </nav>
