@@ -1,55 +1,139 @@
 import "./About.css"
-import myPhoto from "../assets/my-photo.jpeg"
+
+import {
+  FaGraduationCap,
+  FaLaptopCode,
+  FaBrain,
+  FaArrowRight
+} from "react-icons/fa"
+
+import { MdAutoGraph } from "react-icons/md"
 
 function About() {
+
+  const interests = [
+    {
+      number: "01",
+      icon: <FaGraduationCap />,
+      title: "Computer Science",
+      text: "BSc Honours undergraduate"
+    },
+
+    {
+      number: "02",
+      icon: <FaLaptopCode />,
+      title: "Software Development",
+      text: "Building practical applications"
+    },
+
+    {
+      number: "03",
+      icon: <FaBrain />,
+      title: "AI & Data Analysis",
+      text: "Exploring intelligent technologies"
+    },
+
+    {
+      number: "04",
+      icon: <MdAutoGraph />,
+      title: "Continuous Learning",
+      text: "Always developing new skills"
+    }
+  ]
+
   return (
     <section className="about" id="about">
 
-      <div className="about-image">
-  <img
-    src={myPhoto}
-    alt="Heshani Buddhima"
-    className="profile-image"
-  />
-</div>
+      {/* SECTION HEADING */}
 
-      <div className="about-content">
+      <div className="about-heading">
 
-        <p className="section-label">ABOUT ME</p>
+        <div className="small-title">
+          <span></span>
+          ABOUT ME
+          <span></span>
+        </div>
 
         <h2>
-          Get to know <span>me.</span>
+          Get to know <strong>me.</strong>
         </h2>
 
         <p>
-          I am a Computer Science undergraduate with an interest in
-          software development, web technologies, artificial intelligence,
-          and data analysis.
+          A little about who I am, what I am interested in,
+          and what I am currently working towards.
         </p>
 
-        <p>
-          I enjoy learning new technologies and building practical
-          applications that help me improve my programming and
-          problem-solving skills.
-        </p>
+      </div>
 
-        <div className="about-info">
 
-          <div>
-            <h3>Education</h3>
-            <p>BSc Honours in Computer Science</p>
-          </div>
+      {/* MAIN CONTENT */}
 
-          <div>
-            <h3>University</h3>
-            <p>University of Vavuniya</p>
-          </div>
+      <div className="about-container">
+
+        {/* LEFT */}
+
+        <div className="about-story">
+
+          <p className="about-label">
+            WHO I AM
+          </p>
+
+          <h3>
+            Turning ideas into
+            <span> meaningful solutions.</span>
+          </h3>
+
+          <p>
+            I am a Computer Science undergraduate at the
+            University of Vavuniya with an interest in software
+            development, web technologies, Artificial Intelligence,
+            and data analysis.
+          </p>
+
+          <p>
+            I enjoy learning new technologies and applying what I
+            learn through academic and personal projects. My goal is
+            to continuously improve my technical and problem-solving
+            skills while gaining practical experience.
+          </p>
+
+          <a href="#contact" className="about-contact-btn">
+            Let's Connect
+            <FaArrowRight />
+          </a>
 
         </div>
 
-        <a href="#contact" className="about-button">
-          Contact Me
-        </a>
+
+        {/* RIGHT */}
+
+        <div className="about-interests">
+
+          {interests.map((item, index) => (
+
+            <div className="interest-item" key={index}>
+
+              <span className="interest-number">
+                {item.number}
+              </span>
+
+              <div className="interest-icon">
+                {item.icon}
+              </div>
+
+              <div className="interest-text">
+
+                <h4>{item.title}</h4>
+
+                <p>{item.text}</p>
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
 
       </div>
 

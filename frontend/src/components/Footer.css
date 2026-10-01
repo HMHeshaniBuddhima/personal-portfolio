@@ -1,0 +1,198 @@
+.footer {
+  padding: 70px 8% 25px;
+
+  background: #050912;
+
+  border-top: 1px solid #16283d;
+
+  color: white;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+
+  gap: 60px;
+
+  padding-bottom: 50px;
+}
+
+
+/* About */
+
+.footer-about h2 {
+  font-size: 27px;
+  margin-bottom: 18px;
+}
+
+.footer-about h2 span {
+  color: #00aaff;
+}
+
+.footer-about p {
+  max-width: 430px;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+
+/* Quick Links */
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.footer-links h3,
+.footer-social h3 {
+  font-size: 16px;
+
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  width: fit-content;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #00aaff;
+
+  transform: translateX(4px);
+}
+
+
+/* Social */
+
+.footer-social-icons {
+  display: flex;
+
+  gap: 10px;
+}
+
+.footer-social-icons a {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #0b1524;
+
+  border: 1px solid #1e3a56;
+  border-radius: 8px;
+
+  color: #94a3b8;
+
+  font-size: 17px;
+
+  transition: 0.3s;
+}
+
+.footer-social-icons a:hover {
+  color: #00aaff;
+
+  border-color: #00aaff;
+
+  transform: translateY(-3px);
+}
+
+
+/* Bottom */
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: auto;
+
+  padding-top: 22px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: 1px solid #16283d;
+}
+
+.footer-bottom p {
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+/* Back to top */
+
+.back-to-top {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #00aaff;
+
+  border-radius: 8px;
+
+  color: #050912;
+
+  transition: 0.3s;
+}
+
+.back-to-top:hover {
+  background: #38bdf8;
+
+  transform: translateY(-4px);
+}
+
+
+/* Tablet */
+
+@media (max-width: 800px) {
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-about {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 550px) {
+
+  .footer {
+    padding: 60px 6% 25px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+  .footer-about {
+    grid-column: auto;
+  }
+
+  .footer-bottom {
+    gap: 20px;
+  }
+}

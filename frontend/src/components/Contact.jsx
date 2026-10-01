@@ -83,7 +83,7 @@ function Contact() {
             </a>
 
             <a
-              href="YOUR_LINKEDIN_URL"
+              href="https://www.linkedin.com/in/heshani-buddhima-316254428"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
