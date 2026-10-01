@@ -1,0 +1,129 @@
+.about {
+  min-height: 100vh;
+  padding: 100px 10%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+
+  background-color: #0b101b;
+}
+
+/* LEFT SIDE */
+
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-image {
+  width: 330px;
+  height: 400px;
+
+  object-fit: cover;
+
+  border-radius: 20px;
+  border: 2px solid #00aaff;
+
+  box-shadow: 0 0 35px rgba(0, 170, 255, 0.2);
+
+  transition: 0.3s;
+}
+
+.profile-image:hover {
+  transform: scale(1.03);
+
+  box-shadow: 0 0 45px rgba(0, 170, 255, 0.35);
+}
+
+/* RIGHT SIDE */
+
+.about-content {
+  flex: 1;
+  max-width: 650px;
+}
+
+.section-label {
+  color: #00aaff;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.about-content h2 {
+  font-size: 42px;
+  margin-bottom: 25px;
+}
+
+.about-content h2 span {
+  color: #00aaff;
+}
+
+.about-content > p {
+  color: #94a3b8;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.about-info {
+  display: flex;
+  gap: 50px;
+
+  margin-top: 30px;
+  margin-bottom: 35px;
+}
+
+.about-info h3 {
+  color: white;
+  margin-bottom: 8px;
+}
+
+.about-info p {
+  color: #94a3b8;
+}
+
+/* BUTTON */
+
+.about-button {
+  display: inline-block;
+
+  padding: 12px 25px;
+
+  background-color: #00aaff;
+  color: #080c14;
+
+  border-radius: 6px;
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+.about-button:hover {
+  background-color: #38bdf8;
+  transform: translateY(-3px);
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+  .about {
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+  }
+
+  .image-placeholder {
+    width: 270px;
+    height: 330px;
+  }
+
+  .about-info {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
