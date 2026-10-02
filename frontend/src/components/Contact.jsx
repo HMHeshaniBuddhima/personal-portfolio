@@ -1,4 +1,5 @@
 import { useState } from "react"
+import emailjs from "@emailjs/browser"
 import "./Contact.css"
 
 import {
@@ -18,6 +19,7 @@ function Contact() {
   })
 
   const [status, setStatus] = useState("")
+  const [isSending, setIsSending] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -31,31 +33,38 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    setIsSending(true)
+    setStatus("Sending message...")
+
     try {
-      const response = await fetch("http://localhost:8080/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
+      await emailjs.send(
+        "service_tilhb7o",
+        "template_af4v22u",
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
         },
-        body: JSON.stringify(formData)
+        {
+          publicKey: "ewGZ4fbsFOGUjUKAk"
+        }
+      )
+
+      setStatus("Message sent successfully!")
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
       })
 
-      if (response.ok) {
-        setStatus("Message sent successfully!")
-
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: ""
-        })
-      } else {
-        setStatus("Failed to send message.")
-      }
-
     } catch (error) {
-      console.error("Error:", error)
-      setStatus("Something went wrong. Please try again.")
+      console.error("EmailJS Error:", error)
+      setStatus("Failed to send message. Please try again.")
+    } finally {
+      setIsSending(false)
     }
   }
 
@@ -230,8 +239,9 @@ function Contact() {
             <button
               type="submit"
               className="send-button"
+              disabled={isSending}
             >
-              Send Message
+              {isSending ? "Sending..." : "Send Message"}
               <FaPaperPlane />
             </button>
 
