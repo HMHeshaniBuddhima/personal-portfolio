@@ -1,3 +1,4 @@
+import { useState } from "react"
 import "./Contact.css"
 
 import {
@@ -8,6 +9,55 @@ import {
 } from "react-icons/fa"
 
 function Contact() {
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  })
+
+  const [status, setStatus] = useState("")
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const response = await fetch("http://localhost:8080/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      })
+
+      if (response.ok) {
+        setStatus("Message sent successfully!")
+
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        })
+      } else {
+        setStatus("Failed to send message.")
+      }
+
+    } catch (error) {
+      console.error("Error:", error)
+      setStatus("Something went wrong. Please try again.")
+    }
+  }
 
   return (
     <section className="contact" id="contact">
@@ -31,7 +81,6 @@ function Contact() {
 
       </div>
 
-
       <div className="contact-container">
 
         {/* LEFT SIDE */}
@@ -53,7 +102,6 @@ function Contact() {
             and computer science.
           </p>
 
-
           <div className="contact-item">
 
             <div className="contact-icon">
@@ -69,7 +117,6 @@ function Contact() {
             </div>
 
           </div>
-
 
           <div className="social-links">
 
@@ -95,12 +142,14 @@ function Contact() {
 
         </div>
 
-
         {/* RIGHT SIDE - FORM */}
 
         <div className="contact-form-container">
 
-          <form className="contact-form">
+          <form
+            className="contact-form"
+            onSubmit={handleSubmit}
+          >
 
             <div className="form-row">
 
@@ -113,11 +162,14 @@ function Contact() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Enter your name"
+                  required
                 />
 
               </div>
-
 
               <div className="form-group">
 
@@ -128,13 +180,16 @@ function Contact() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Enter your email"
+                  required
                 />
 
               </div>
 
             </div>
-
 
             <div className="form-group">
 
@@ -145,11 +200,14 @@ function Contact() {
               <input
                 type="text"
                 id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
                 placeholder="Enter message subject"
+                required
               />
 
             </div>
-
 
             <div className="form-group">
 
@@ -159,21 +217,29 @@ function Contact() {
 
               <textarea
                 id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 rows="6"
                 placeholder="Write your message..."
+                required
               ></textarea>
 
             </div>
-
 
             <button
               type="submit"
               className="send-button"
             >
               Send Message
-
               <FaPaperPlane />
             </button>
+
+            {status && (
+              <p className="form-status">
+                {status}
+              </p>
+            )}
 
           </form>
 
