@@ -30,43 +30,60 @@ function Contact() {
     })
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    setIsSending(true)
-    setStatus("Sending message...")
+  setIsSending(true);
+  setStatus("Sending message...");
 
-    try {
-      await emailjs.send(
-        "service_tilhb7o",
-        "template_af4v22u",
-        {
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message
-        },
-        {
-          publicKey: "ewGZ4fbsFOGUjUKAk"
-        }
-      )
+  try {
+    // Step 1: Save message to MongoDB
+    const response = await fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
 
-      setStatus("Message sent successfully!")
-
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: ""
-      })
-
-    } catch (error) {
-      console.error("EmailJS Error:", error)
-      setStatus("Failed to send message. Please try again.")
-    } finally {
-      setIsSending(false)
+    if (!response.ok) {
+      throw new Error("Failed to save message");
     }
+
+    // Step 2: Send email using EmailJS
+    await emailjs.send(
+      "service_tilhb7o",
+      "template_af4v22u",
+      {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      },
+      {
+        publicKey: "ewGZ4fbsFOGUjUKAk"
+      }
+    );
+
+    setStatus("Message sent successfully!");
+
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
+    });
+
+  } catch (error) {
+    console.error("Contact Form Error:", error);
+    setStatus("Something went wrong. Please try again.");
+  } finally {
+    setIsSending(false);
   }
+};
+
+
 
   return (
     <section className="contact" id="contact">
