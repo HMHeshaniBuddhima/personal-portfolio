@@ -20,7 +20,7 @@ const messageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Message = mongoose.model(
+const Message = mongoose.models.message || mongoose.model(
   "Message",
   messageSchema,
   "contact_messages"

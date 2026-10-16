@@ -1,5 +1,5 @@
 const serverless = require("serverless-http");
-const mongoose = require("mongoose");
+const mongoose = require("../../../backend/node_modules/mongoose");
 const app = require("../../../backend/server");
 
 let connectionPromise;
