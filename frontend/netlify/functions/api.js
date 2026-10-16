@@ -30,6 +30,7 @@ const handler = serverless(app);
 exports.handler = async (event, context) => {
   try {
     await connectDB();
+    console.log("MongoDB connection state:", mongoose.connection.readyState);
     return await handler(event, context);
   } catch (error) {
     console.error("Backend error:", error);
