@@ -25,8 +25,7 @@ const Message = mongoose.model(
   messageSchema,
   "contact_messages"
 );
-// Test Route
-app.get("/", (req, res) => {
+app.get(["/", "/api", "/api/", "/.netlify/functions/api", "/.netlify/functions/api/"], (req, res) => {
   res.send("Portfolio Backend is Running!");
 });
 
