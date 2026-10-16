@@ -62,6 +62,12 @@ app.post("/api/contact", async (req, res) => {
       message
     });
 
+    // Check MongoDB model connection
+    console.log(
+      "Message model connection state:",
+      Message.db.readyState
+    );
+
     await newMessage.save();
 
     res.status(201).json({
